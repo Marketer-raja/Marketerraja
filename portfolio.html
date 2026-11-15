@@ -3,6 +3,7 @@
 <head>
   
 <meta charset="UTF-8">
+<title>Portfolio &amp; Campaign Results | Marketer Raja</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
 <meta name="description" content="Marketer Raja — 3,400+ leads, ₹5.35 floor CPL. Real Meta Ads results for global enterprise clients.">
 <meta name="keywords" content="marketer raja, global digital marketing, meta ads results, lead generation specialist">
@@ -876,7 +877,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <i class="fab fa-whatsapp"></i>
     FREE STRATEGY CALL
   </a>
-  <button aria-label="Toggle Navigation" aria-expanded="false" class="nav-toggle" id="nav-toggle">
+  <button aria-label="Toggle Navigation" aria-expanded="false" class="nav-toggle" id="nav-toggle" type="button" aria-controls="nav-links">
     <span class="hamburger-icon">
       <span></span>
       <span></span>
@@ -930,7 +931,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- Campaign Table -->
   <div class="port-campaign-block reveal">
     <div class="port-camp-header">
-      <h1>Meta Ads Micro-Asset Ledger // Historical Deep Dive</h1>
+      <h2>Meta Ads Micro-Asset Ledger // Historical Deep Dive</h2>
       <div class="port-camp-badge">ACCOUNT STATUS: VERIFIED OPTIMIZATION ACTIVE</div>
     </div>
     <div class="port-table-wrap">
@@ -961,19 +962,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <!-- Charts -->
   <!--<div class="port-chart-card reveal">
-    <h1> Per Lead Decay Function — Covai Air Conditioning</h1>
+    <h2> Per Lead Decay Function — Covai Air Conditioning</h2>
     <div class="port-chart-sub">Long-term optimization trend (lower is better)</div>
     
   </div>-->
 
   <div class="port-chart-card reveal d1">
-    <h1>Volumetric Funnel Scale by Account</h1>
+    <h2>Volumetric Funnel Scale by Account</h2>
     <div class="port-chart-sub">Aggregated conversation data across complete client cohort</div>
     <div class="chart-wrap"><canvas id="compareChart"></canvas></div>
   </div>
 
  <!-- <div class="port-chart-card reveal d2">
-    <h1>Strategic CPL Inter-Market Delta</h1>
+    <h2>Strategic CPL Inter-Market Delta</h2>
     <div class="port-chart-sub">Blended cost distribution benchmarks across target industries</div>
     <div class="chart-wrap"><canvas id="cplChart"></canvas></div>
   </div>-->
@@ -1222,29 +1223,7 @@ if(toggleBtn && navLinks){
   const chartFont={family:"'Share Tech Mono', monospace",size:10};
   const isMobile=window.innerWidth<600;
 
-  // Chart 1: Covai CPL Trend
-  new Chart(document.getElementById('covaiChart'),{
-    type:'line',
-    data:{
-      labels:['Sep 25','Oct 25','Nov-A','Nov-B','Nov-C','Dec-A','Dec-B','Jan-A','Jan-B','Feb-A','Feb-B','Mar-A','Mar-B'],
-      datasets:[{
-        label:'Cost Per Lead (₹)',
-        data:[12.65,15.96,12.56,14.01,19.04,26.50,24.24,16.16,18.76,12.20,5.60,5.35,8.04],
-        borderColor:'#00f5ff',borderWidth:2,
-        pointBackgroundColor:'#ff0080',pointRadius:isMobile?3:4,
-        tension:0.3,fill:true,
-        backgroundColor:'rgba(0,245,255,0.07)'
-      }]
-    },
-    options:{
-      responsive:true,maintainAspectRatio:false,
-      plugins:{legend:{display:false}},
-      scales:{
-        y:{ticks:{color:tickColor,font:chartFont},grid:{color:gridColor}},
-        x:{ticks:{color:tickColor,font:chartFont,maxRotation:isMobile?45:30},grid:{color:gridColor}}
-      }
-    }
-  });
+  if (!window.Chart || !document.getElementById('compareChart')) return;
 
   // Chart 2: Doughnut Volume
   new Chart(document.getElementById('compareChart'),{
@@ -1270,28 +1249,6 @@ if(toggleBtn && navLinks){
     }
   });
 
-  // Chart 3: CPL Bar
-  new Chart(document.getElementById('cplChart'),{
-    type:'bar',
-    data:{
-      labels:['MyTrip','PureBreeze','Colour','Raja DM','Ganapathi','M.A Fashion','RDS','DS Elect','TVS','RS Readymates','Covai AC','Gluta'],
-      datasets:[{
-        label:'Cost Per Lead (₹)',
-        data:[32.40,28.40,27.13,24.16,24.20,24.00,25.00,22.13,21.20,18.00,42.50,11.82],
-        backgroundColor:['#ff0080','#00f5ff','#ffd700','#00ff88','#9b00ff','#ff0000','#00f5ff','#ff0080','#00ff88','#ffd700','#00f5ff','#ff0080'].map(c=>c+'22'),
-        borderColor:['#ff0080','#00f5ff','#ffd700','#00ff88','#9b00ff','#ff0000','#00f5ff','#ff0080','#00ff88','#ffd700','#00f5ff','#ff0080'],
-        borderWidth:1.5,borderRadius:2,maxBarThickness:28
-      }]
-    },
-    options:{
-      responsive:true,maintainAspectRatio:false,
-      plugins:{legend:{display:false}},
-      scales:{
-        y:{ticks:{color:tickColor,font:chartFont},grid:{color:gridColor}},
-        x:{ticks:{color:tickColor,font:chartFont,maxRotation:45,minRotation:45},grid:{display:false}}
-      }
-    }
-  });
 })();
 </script>
 
@@ -1363,8 +1320,8 @@ document.addEventListener('click', e => {
               </div>`;
 
             // Look for "CPL" or "COST" in the label to feed the Bar Chart
-            if (m.label.toUpperCase().includes('CPL') || m.label.toUpperCase().includes('COST')) {
-              cplValue = parseFloat(m.value.replace(/[^0-9.]/g, '')) || 0;
+            if (String(m.label || '').toUpperCase().includes('CPL') || String(m.label || '').toUpperCase().includes('COST')) {
+              cplValue = parseFloat(String(m.value || '').replace(/[^0-9.]/g, '')) || 0;
             }
           });
         }
@@ -1415,6 +1372,7 @@ document.addEventListener('click', e => {
   }
 
   function initCharts(dynamicLabels, dynamicVolumeData, dynamicCplData) {
+    if (!window.Chart) return;
     const gridColor='rgba(0,245,255,0.05)';
     const tickColor='rgba(232,244,255,0.45)';
     const chartFont={family:"'Share Tech Mono', monospace",size:10};
