@@ -1,7 +1,6 @@
 User-agent: *
 Allow: /
-
-# Prevent search engines from indexing your private admin dashboard
 Disallow: /admin.html
+Disallow: /internship_verification.html
 
 Sitemap: https://www.marketerraja.com/sitemap.xml
